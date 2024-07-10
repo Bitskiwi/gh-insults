@@ -10,8 +10,7 @@ declare user=$1
 
 # get the github API json for the user
 
-#declare json=$(curl -s "https://api.github.com/users/$user")
-declare json=$(cat bitskiwi.json)
+declare json=$(curl -s "https://api.github.com/users/$user")
 
 # get information
 
@@ -29,9 +28,7 @@ declare twitter=$(echo $json | grep -o '"twitter_username": *"[^"]*"' | awk -F'"
 
 stars=0
 
-#declare repo_json=$(curl -s "https://api.github.com/users/$user/repos")
-
-declare repo_json=$(cat repos.json)
+declare repo_json=$(curl -s "https://api.github.com/users/$user/repos")
 
 while IFS= read -r line; do
 	if [[ "$line" == *"\"stargazers_count\":"* ]]
